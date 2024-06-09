@@ -1,39 +1,17 @@
-import { Button, Card, Stack } from 'react-bootstrap'
+import { useContext } from 'react'
+import { TodosContext } from '../context/TodoContext'
+import { Stack } from 'react-bootstrap'
+import TodoItem from './TodoItem'
 
 const TodoList = () => {
+  const todos = useContext(TodosContext)
+
   return (
     <div className='mt-5'>
       <Stack gap={3}>
-        <Card>
-          <Card.Body>
-            <Card.Title>Todo #1</Card.Title>
-            <Card.Text>This is my first todo item</Card.Text>
-          </Card.Body>
-          <Card.Footer className='d-flex justify-content-end gap-2'>
-            <Button variant='warning'>Edit</Button>
-            <Button variant='danger'>Delete</Button>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Body>
-            <Card.Title>Todo #2</Card.Title>
-            <Card.Text>This is my second todo item</Card.Text>
-          </Card.Body>
-          <Card.Footer className='d-flex justify-content-end gap-2'>
-            <Button variant='warning'>Edit</Button>
-            <Button variant='danger'>Delete</Button>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Body>
-            <Card.Title>Todo #3</Card.Title>
-            <Card.Text>This is my third todo item</Card.Text>
-          </Card.Body>
-          <Card.Footer className='d-flex justify-content-end gap-2'>
-            <Button variant='warning'>Edit</Button>
-            <Button variant='danger'>Delete</Button>
-          </Card.Footer>
-        </Card>
+        {todos.map((todo) => (
+          <TodoItem todoItem={todo} key={todo.id} />
+        ))}
       </Stack>
     </div>
   )
