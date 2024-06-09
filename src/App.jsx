@@ -16,8 +16,7 @@ const App = () => {
       <TodosDispatchContext.Provider value={dispatch}>
         <Container className='mt-5'>
           <h2 className='text-center my-4'>Omair's Todo List</h2>
-          <EditTodoContext.Provider>
-            <TodoForm />
+          <EditTodoContext.Provider value={{ todo: '', notes: '' }}>
             <TodoList />
           </EditTodoContext.Provider>
         </Container>

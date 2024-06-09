@@ -1,9 +1,13 @@
 import { useContext } from 'react'
-import { TodosDispatchContext, EditTodoContext } from '../context/TodoContext'
+import { TodosDispatchContext } from '../context/TodoContext'
 import { Card, Button } from 'react-bootstrap'
 
-const TodoItem = ({ todoItem }) => {
+const TodoItem = ({ todoItem, formContent, setFormContent }) => {
   const dispatch = useContext(TodosDispatchContext)
+
+  const handleEdit = (todoItem, todoNotes) => {
+    setFormContent({ todo: todoItem, notes: todoNotes })
+  }
 
   return (
     <Card key={todoItem.id}>
@@ -14,16 +18,7 @@ const TodoItem = ({ todoItem }) => {
       <Card.Footer className='d-flex justify-content-end gap-2'>
         <Button
           variant='warning'
-          onClick={() =>
-            dispatch({
-              type: 'EDIT_TODO',
-              payload: {
-                id: todoItem.id,
-                todo: todoItem.todo,
-                notes: todoItem.notes,
-              },
-            })
-          }
+          onClick={() => handleEdit(todoItem.todo, todoItem.notes)}
         >
           Edit
         </Button>

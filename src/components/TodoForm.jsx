@@ -1,24 +1,21 @@
-import { useRef, useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { TodosDispatchContext } from '../context/TodoContext'
 import { Button, Form, FormGroup } from 'react-bootstrap'
 
 const TodoForm = () => {
   const dispatch = useContext(TodosDispatchContext)
-
-  const todoRef = useRef()
-  const notesRef = useRef()
+  const [formContent, setFormContent] = useState({ todo: '', notes: '' })
 
   const handleSubmit = () => {
     const newTodoItem = {
       id: Math.floor(Math.random() * 1000),
-      todo: todoRef.current.value,
-      notes: notesRef.current.value,
+      todo: formContent.todo,
+      notes: formContent.notes,
     }
 
     dispatch({ type: 'ADD_TODO', payload: newTodoItem })
 
-    todoRef.current.value = ''
-    notesRef.current.value = ''
+    setFormContent({ todo: '', notes: '' })
   }
 
   return (
@@ -27,11 +24,21 @@ const TodoForm = () => {
         <Form.Control
           placeholder='Enter your todo item here...'
           type='text'
-          ref={todoRef}
+          value={formContent.todo}
+          onChange={(e) =>
+            setFormContent({ ...formContent, todo: e.target.value })
+          }
         />
       </FormGroup>
       <FormGroup>
-        <Form.Control placeholder='Notes...' as='textarea' ref={notesRef} />
+        <Form.Control
+          placeholder='Notes...'
+          as='textarea'
+          value={formContent.notes}
+          onChange={(e) =>
+            setFormContent({ ...formContent, notes: e.target.value })
+          }
+        />
       </FormGroup>
       <Button variant='primary' className='mt-3' onClick={handleSubmit}>
         Submit
