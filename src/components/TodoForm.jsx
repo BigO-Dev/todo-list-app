@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import { Button, Form } from 'react-bootstrap'
-import TodoList from './TodoList'
 
 const TodoForm = ({ setTodos, inputValue, setInputValue, todoIndex }) => {
   const handleSubmit = (e) => {
@@ -43,6 +42,13 @@ const TodoForm = ({ setTodos, inputValue, setInputValue, todoIndex }) => {
       </Button>
     </Form>
   )
+}
+
+TodoForm.propTypes = {
+  setTodos: PropTypes.func.isRequired,
+  inputValue: PropTypes.object.isRequired,
+  setInputValue: PropTypes.func.isRequired,
+  todoIndex: PropTypes.number.isRequired,
 }
 
 export default TodoForm

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Stack, Card, Button } from 'react-bootstrap'
 
 const TodoList = ({ todos, setTodos, handleEdit }) => {
@@ -40,6 +41,12 @@ const TodoList = ({ todos, setTodos, handleEdit }) => {
       ))}
     </Stack>
   )
+}
+
+TodoList.propTypes = {
+  todos: PropTypes.array.isRequired,
+  setTodos: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
 }
 
 export default TodoList
