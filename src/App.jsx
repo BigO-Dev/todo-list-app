@@ -9,11 +9,12 @@ const App = () => {
     { task: 'Do laundry', notes: 'Whites and darks' },
     { task: 'Mow the lawn', notes: 'Backyard only' },
   ])
-
+  const [todoIndex, setTodoIndex] = useState(0)
   const [inputValue, setInputValue] = useState({ task: '', notes: '' })
 
-  const handleEdit = (task, notes) => {
+  const handleEdit = (task, notes, index) => {
     setInputValue({ task, notes })
+    setTodoIndex(index)
   }
 
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <h2 className='text-center my-3'>Omair's Todo List</h2>
       <TodoForm
         setTodos={setTodos}
+        todoIndex={todoIndex}
         inputValue={inputValue}
         setInputValue={setInputValue}
       />

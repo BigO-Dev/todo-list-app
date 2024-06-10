@@ -23,7 +23,7 @@ const TodoList = ({ todos, setTodos, handleEdit }) => {
               <Button
                 variant='warning'
                 className='mx-1'
-                onClick={() => handleEdit(todo.task, todo.notes)}
+                onClick={() => handleEdit(todo.task, todo.notes, index)}
               >
                 Edit
               </Button>

@@ -1,12 +1,19 @@
 import { useRef, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import TodoList from './TodoList'
 
-const TodoForm = ({ setTodos, inputValue, setInputValue }) => {
+const TodoForm = ({ setTodos, inputValue, setInputValue, todoIndex }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
     setTodos((prevTodos) => {
-      return [...prevTodos, inputValue]
+      return prevTodos.map((todo, index) => {
+        if (index === todoIndex) {
+          return { ...inputValue }
+        } else {
+          return todo
+        }
+      })
     })
 
     setInputValue({ task: '', notes: '' })
