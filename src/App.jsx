@@ -1,32 +1,46 @@
 import { useState } from 'react'
 import { Container } from 'react-bootstrap'
-import TodoForm from './components/TodoForm'
-import TodoList from './components/TodoList'
+import HomeworkForm from './components/HomeworkForm'
+import HomeworkList from './components/HomeworkList'
 
 const App = () => {
-  const [todos, setTodos] = useState([
-    { task: 'Buy groceries', notes: 'Milk, eggs, bread' },
-    { task: 'Do laundry', notes: 'Whites and darks' },
-    { task: 'Mow the lawn', notes: 'Backyard only' },
+  const [assignments, setAssignments] = useState([
+    {
+      task: 'Complete the React homework',
+      notes: 'Understand how functional components work',
+    },
+    {
+      task: 'Complete the Python homework',
+      notes: 'Do the exercises at the end of the chapter',
+    },
+    {
+      task: 'Complete the JavaScript homework',
+      notes: 'Understand how to use the fetch API',
+    },
   ])
-  const [todoIndex, setTodoIndex] = useState(0)
+
+  const [taskIndex, setTaskIndex] = useState(0)
   const [inputValue, setInputValue] = useState({ task: '', notes: '' })
 
   const handleEdit = (task, notes, index) => {
     setInputValue({ task, notes })
-    setTodoIndex(index)
+    setTaskIndex(index)
   }
 
   return (
     <Container>
       <h2 className='text-center my-3'>Omair's Todo List</h2>
-      <TodoForm
-        setTodos={setTodos}
-        todoIndex={todoIndex}
+      <HomeworkForm
+        setAssignments={setAssignments}
+        taskIndex={taskIndex}
         inputValue={inputValue}
         setInputValue={setInputValue}
       />
-      <TodoList todos={todos} setTodos={setTodos} handleEdit={handleEdit} />
+      <HomeworkList
+        assignments={assignments}
+        setTodos={assignments}
+        handleEdit={handleEdit}
+      />
     </Container>
   )
 }

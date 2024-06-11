@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import { Button, Form } from 'react-bootstrap'
 
-const TodoForm = ({ setTodos, inputValue, setInputValue, todoIndex }) => {
+const TodoForm = ({ setAssignments, inputValue, setInputValue, taskIndex }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    setTodos((prevTodos) => {
-      return prevTodos.map((todo, index) => {
-        if (index === todoIndex) {
+    setAssignments((prevTasks) => {
+      return prevTasks.map((task, index) => {
+        if (index === taskIndex) {
           return { ...inputValue }
         } else {
-          return todo
+          return task
         }
       })
     })
@@ -45,10 +45,10 @@ const TodoForm = ({ setTodos, inputValue, setInputValue, todoIndex }) => {
 }
 
 TodoForm.propTypes = {
-  setTodos: PropTypes.func.isRequired,
+  setAssignments: PropTypes.func.isRequired,
   inputValue: PropTypes.object.isRequired,
   setInputValue: PropTypes.func.isRequired,
-  todoIndex: PropTypes.number.isRequired,
+  taskIndex: PropTypes.number.isRequired,
 }
 
 export default TodoForm

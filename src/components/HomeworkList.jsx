@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types'
 import { Stack, Card, Button } from 'react-bootstrap'
 
-const TodoList = ({ todos, setTodos, handleEdit }) => {
+const TodoList = ({ assignments, setAssignments, handleEdit }) => {
   const handleDelete = (index) => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter((todo, i) => i !== index)
+    setAssignments((prevTask) => {
+      return prevTask.filter((task, i) => i !== index)
     })
   }
 
   return (
     <Stack className='my-5' gap={3}>
-      {todos.map((todo, index) => (
+      {assignments.map((assignment, index) => (
         <Card key={index} className='p-3'>
           <Card.Title>
-            <h3>{todo.task}</h3>
+            <h3>{assignment.task}</h3>
           </Card.Title>
-          <Card.Text>{todo.notes}</Card.Text>
+          <Card.Text>{assignment.notes}</Card.Text>
           <Card.Footer>
             <small className='text-muted'>
               Created at: {new Date().toLocaleString()}
@@ -24,7 +24,9 @@ const TodoList = ({ todos, setTodos, handleEdit }) => {
               <Button
                 variant='warning'
                 className='mx-1'
-                onClick={() => handleEdit(todo.task, todo.notes, index)}
+                onClick={() =>
+                  handleEdit(assignment.task, assignment.notes, index)
+                }
               >
                 Edit
               </Button>
@@ -44,8 +46,8 @@ const TodoList = ({ todos, setTodos, handleEdit }) => {
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
-  setTodos: PropTypes.func.isRequired,
+  assignments: PropTypes.array.isRequired,
+  setAssignments: PropTypes.func.isRequired,
   handleEdit: PropTypes.func.isRequired,
 }
 
