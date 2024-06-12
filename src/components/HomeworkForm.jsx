@@ -37,6 +37,8 @@ const TodoForm = ({ setAssignments, inputValue, setInputValue, taskIndex }) => {
           setInputValue({ ...inputValue, notes: e.target.value })
         }
       />
+      <Form.Text>Due date:</Form.Text>
+      <Form.Control type='date' className='mb-2' />
       <Button type='submit' onClick={handleSubmit}>
         Add task
       </Button>
