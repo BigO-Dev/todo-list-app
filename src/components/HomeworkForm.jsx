@@ -15,7 +15,7 @@ const TodoForm = ({ setAssignments, inputValue, setInputValue, taskIndex }) => {
       })
     })
 
-    setInputValue({ task: '', notes: '' })
+    setInputValue({ task: '', notes: '', dueDate: '' })
   }
 
   return (
@@ -38,7 +38,14 @@ const TodoForm = ({ setAssignments, inputValue, setInputValue, taskIndex }) => {
         }
       />
       <Form.Text>Due date:</Form.Text>
-      <Form.Control type='date' className='mb-2' />
+      <Form.Control
+        type='date'
+        className='mb-2'
+        value={inputValue.dueDate}
+        onChange={(e) =>
+          setInputValue({ ...inputValue, dueDate: e.target.value })
+        }
+      />
       <Button type='submit' onClick={handleSubmit}>
         Add task
       </Button>

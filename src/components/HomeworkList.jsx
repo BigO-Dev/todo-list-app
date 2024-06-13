@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types'
 import { Stack, Card, Button } from 'react-bootstrap'
 
-const TodoList = ({ assignments, setAssignments, handleEdit }) => {
+const HomeWorkList = ({ assignments, setAssignments, handleEdit }) => {
   const handleDelete = (index) => {
     setAssignments((prevTask) => {
       return prevTask.filter((task, i) => i !== index)
     })
   }
+
+  const createdDate = new Intl.DateTimeFormat('en-US').format()
 
   return (
     <Stack className='my-5' gap={3}>
@@ -17,9 +19,13 @@ const TodoList = ({ assignments, setAssignments, handleEdit }) => {
           </Card.Title>
           <Card.Text>{assignment.notes}</Card.Text>
           <Card.Footer>
+            <small className='text-muted'>Created on: {createdDate}</small>
+            <br />
             <small className='text-muted'>
-              Created at: {new Date().toLocaleString()}
+              Due by:{' '}
+              {new Intl.DateTimeFormat('en-US').format(assignment.dueDate)}
             </small>
+
             <div className='d-flex justify-content-end'>
               <Button
                 variant='warning'
@@ -45,10 +51,10 @@ const TodoList = ({ assignments, setAssignments, handleEdit }) => {
   )
 }
 
-TodoList.propTypes = {
+HomeWorkList.propTypes = {
   assignments: PropTypes.array.isRequired,
   setAssignments: PropTypes.func.isRequired,
   handleEdit: PropTypes.func.isRequired,
 }
 
-export default TodoList
+export default HomeWorkList

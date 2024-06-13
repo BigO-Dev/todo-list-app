@@ -20,7 +20,11 @@ const App = () => {
   ])
 
   const [taskIndex, setTaskIndex] = useState(0)
-  const [inputValue, setInputValue] = useState({ task: '', notes: '' })
+  const [inputValue, setInputValue] = useState({
+    task: '',
+    notes: '',
+    dueDate: '',
+  })
 
   const handleEdit = (task, notes, index) => {
     setInputValue({ task, notes })
