@@ -23,7 +23,11 @@ const HomeWorkList = ({ assignments, setAssignments, handleEdit }) => {
             <br />
             <small className='text-muted'>
               Due by:{' '}
-              {new Intl.DateTimeFormat('en-US').format(assignment.dueDate)}
+              {assignment.dueDate && !isNaN(Date.parse(assignment.dueDate))
+                ? new Intl.DateTimeFormat('en-US').format(
+                    new Date(assignment.dueDate)
+                  )
+                : 'Invalid date'}
             </small>
 
             <div className='d-flex justify-content-end'>
