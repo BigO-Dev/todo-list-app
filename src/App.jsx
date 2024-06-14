@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import HomeworkForm from './components/HomeworkForm'
 import HomeworkList from './components/HomeworkList'
 
@@ -32,20 +32,31 @@ const App = () => {
   }
 
   return (
-    <Container>
-      <h2 className='text-center my-3'>Omair's Todo List</h2>
-      <HomeworkForm
-        setAssignments={setAssignments}
-        taskIndex={taskIndex}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-      />
-      <HomeworkList
-        assignments={assignments}
-        setTodos={assignments}
-        handleEdit={handleEdit}
-      />
-    </Container>
+    <>
+      <Navbar bg='dark' variant='dark'>
+        <Container>
+          <Navbar.Brand href='#home'>School Hub</Navbar.Brand>
+          <Nav className='me-auto'>
+            <Nav.Link href='#homework'>Homework</Nav.Link>
+            <Nav.Link href='#grades'>Grades</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+      <Container>
+        <h2 className='text-center my-3'></h2>
+        <HomeworkForm
+          setAssignments={setAssignments}
+          taskIndex={taskIndex}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+        />
+        <HomeworkList
+          assignments={assignments}
+          setTodos={assignments}
+          handleEdit={handleEdit}
+        />
+      </Container>
+    </>
   )
 }
 
