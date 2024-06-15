@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import HomeworkForm from './components/HomeworkForm'
 import HomeworkList from './components/HomeworkList'
 
@@ -33,17 +33,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark'>
-        <Container>
-          <Navbar.Brand href='#home'>School Hub</Navbar.Brand>
-          <Nav className='me-auto'>
-            <Nav.Link href='#homework'>Homework</Nav.Link>
-            <Nav.Link href='#grades'>Grades</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
       <Container>
-        <h2 className='text-center my-3'></h2>
         <HomeworkForm
           setAssignments={setAssignments}
           taskIndex={taskIndex}
